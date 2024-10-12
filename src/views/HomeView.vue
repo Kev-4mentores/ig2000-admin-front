@@ -10,7 +10,7 @@ import {
   mdiGithub,
   mdiChartPie
 } from '@mdi/js'
-import * as chartConfig from '@/components/Charts/chart.config.js'
+import * as chartConfig from '@/components/Charts/chart.config.ts'
 import LineChart from '@/components/Charts/LineChart.vue'
 import SectionMain from '@/components/SectionMain.vue'
 import CardBoxWidget from '@/components/CardBoxWidget.vue'

@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue'
-import { useDarkModeStore } from '@/stores/darkMode.js'
+import { useDarkModeStore } from '@/stores/darkMode.ts'
 import {
   mdiContrastCircle,
   mdiInformation,

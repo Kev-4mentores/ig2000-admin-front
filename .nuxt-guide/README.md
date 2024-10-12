@@ -35,11 +35,11 @@ Now clone [justboil/admin-one-vue-tailwind](https://github.com/justboil/admin-on
 
 Next, copy these files **from justboil/admin-one-vue-tailwind project** directory **to nuxt project** directory:
 
-- Copy `tailwind.config.js` to `/`
+- Copy `tailwind.config.ts` to `/`
 - Copy `src/components` to `components/`
 - Copy `src/layouts` to `layouts/`
 - Copy `src/stores` to `stores/`
-- Copy `src/colors.js` `src/config.js` `src/menuAside.js` `src/menuNavBar.js` to `configs/`
+- Copy `src/colors.ts` `src/config.ts` `src/menuAside.ts` `src/menuNavBar.ts` to `configs/`
 - Copy `src/css` to `assets/css/`
 - Copy `public/favicon.png` to `public/`
 
@@ -63,7 +63,7 @@ export default defineNuxtConfig({
 })
 ```
 
-#### In tailwind.config.js
+#### In tailwind.config.ts
 
 Replace `content`:
 
@@ -85,8 +85,8 @@ module.exports = {
 
 ```vue
 <script setup>
-// import { useDarkModeStore } from '@/stores/darkMode.js'
-// import { darkModeKey } from '@/config.js'
+// import { useDarkModeStore } from '@/stores/darkMode.ts'
+// import { darkModeKey } from '@/config.ts'
 
 useHead({
   titleTemplate: (titleChunk) => {
@@ -120,7 +120,7 @@ useHead({
 </template>
 ```
 
-#### In stores/main.js
+#### In stores/main.ts
 
 Remove `axios`, as you'll likely going to use Nuxt's `useFetch`. Then add some sample data for `clients` and `history`.
 

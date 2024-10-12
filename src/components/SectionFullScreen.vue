@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
-import { useDarkModeStore } from '@/stores/darkMode.js'
-import { gradientBgPurplePink, gradientBgDark, gradientBgPinkRed } from '@/colors.js'
+import { useDarkModeStore } from '@/stores/darkMode.ts'
+import { gradientBgPurplePink, gradientBgDark, gradientBgPinkRed } from '@/colors.ts'
 
 const props = defineProps({
   bg: {

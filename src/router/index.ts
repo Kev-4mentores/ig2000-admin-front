@@ -13,7 +13,7 @@ const routes = [
   },
   {
     // Document title tag
-    // We combine it with defaultDocumentTitle set in `src/main.js` on router.afterEach hook
+    // We combine it with defaultDocumentTitle set in `src/main.ts` on router.afterEach hook
     meta: {
       title: 'Dashboard'
     },

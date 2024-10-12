@@ -1,7 +1,7 @@
 import '../css/main.css'
 
 import { createPinia } from 'pinia'
-// import { useDarkModeStore } from '@/stores/darkMode.js'
+// import { useDarkModeStore } from '@/stores/darkMode.ts'
 import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'

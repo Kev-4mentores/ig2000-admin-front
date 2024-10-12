@@ -3,7 +3,7 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
-import { useMainStore } from '@/stores/main.js'
+import { useMainStore } from '@/stores/main.ts'
 
 import './css/main.css'
 
@@ -21,7 +21,7 @@ mainStore.fetchSampleClients()
 mainStore.fetchSampleHistory()
 
 // Dark mode
-// Uncomment, if you'd like to restore persisted darkMode setting, or use `prefers-color-scheme: dark`. Make sure to uncomment localStorage block in src/stores/darkMode.js
+// Uncomment, if you'd like to restore persisted darkMode setting, or use `prefers-color-scheme: dark`. Make sure to uncomment localStorage block in src/stores/darkMode.ts
 // import { useDarkModeStore } from './stores/darkMode'
 
 // const darkModeStore = useDarkModeStore(pinia)

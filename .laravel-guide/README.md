@@ -62,8 +62,8 @@ Now clone [justboil/admin-one-vue-tailwind](https://github.com/justboil/admin-on
 
 Next, copy these files **from justboil/admin-one-vue-tailwind project** directory **to laravel project** directory:
 
-- Copy `tailwind.config.js` to `/`
-- Copy `src/components` `src/layouts` `src/stores` `src/colors.js` `src/config.js` `src/menuAside.js` `src/menuNavBar.js` to `resources/js/`
+- Copy `tailwind.config.ts` to `/`
+- Copy `src/components` `src/layouts` `src/stores` `src/colors.ts` `src/config.ts` `src/menuAside.ts` `src/menuNavBar.ts` to `resources/js/`
 - Copy `.laravel-guide/resources/js/` to `resources/js/`
 - Delete `resources/css/app.css`
 - Copy `src/css` to `resources/css`
@@ -76,9 +76,9 @@ Fresh Laravel install with Breeze provides **Capitalized** folder names such as 
 - Rename the folders you've copied in the previous section: `resources/js/layouts` to `Layouts`; `components` to `Components`; `stores` to `Stores`
 - Replace everywhere in imports: `@/layouts/` with `@/Layouts/`; `@/components/` with `@/Components/`; `@/stores/` with `@/Stores/`
 
-### In tailwind.config.js
+### In tailwind.config.ts
 
-Please make sure, you've copied template's `tailwind.config.js`. Then replace `content`, to reflect Laravel's structure:
+Please make sure, you've copied template's `tailwind.config.ts`. Then replace `content`, to reflect Laravel's structure:
 
 ```js
 module.exports = {
@@ -131,11 +131,11 @@ Route::get('/dashboard', function () {
 
 Here we replace RouterLink with Inertia Link.
 
-### resources/js/menuAside.js and resources/js/menuNavBar.js
+### resources/js/menuAside.ts and resources/js/menuNavBar.ts
 
 Optionally, you can pass menu via Inertia shared props, so you'll be able to control it with PHP. Here we'd just use JS.
 
-`to` should be replaced with `route` which specifies route name defined in `routes/web.php`. For external links `href` should be used instead. Here's an example for `menuAside.js`:
+`to` should be replaced with `route` which specifies route name defined in `routes/web.php`. For external links `href` should be used instead. Here's an example for `menuAside.ts`:
 
 ```javascript
 export default [
@@ -364,7 +364,7 @@ const userName = computed(() => usePage().props.auth.user.name)
 // Add usePage:
 import { usePage } from '@inertiajs/vue3'
 // Remove unused useMainStore:
-// import { useMainStore } from '@/stores/main.js'
+// import { useMainStore } from '@/stores/main.ts'
 // ...
 
 // Update itemLabel:
@@ -392,13 +392,13 @@ Copy files to your Laravel project (overwrite free version ones or merge if you 
 
 - Copy `src/components/Premium` to `resources/js/components/Premium`
 - Copy `src/stores` to `resources/js/stores`
-- Copy `src/config.js` to `resources/js/config.js`
+- Copy `src/config.ts` to `resources/js/config.ts`
 - Copy `src/sampleButtonMenuOptions.js` to `resources/js/sampleButtonMenuOptions.js`
 - Copy `src/colorsPremium.js` to `resources/js/colorsPremium.js`
 
-### Update tailwind.config.js
+### Update tailwind.config.ts
 
-Replace `tailwind.config.js` in your Laravel project with the Premium one. Make sure to preserve `module.exports.content`:
+Replace `tailwind.config.ts` in your Laravel project with the Premium one. Make sure to preserve `module.exports.content`:
 
 ```js
 module.exports = {
