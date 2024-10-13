@@ -1,77 +1,17 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Style from '@/views/StyleView.vue'
-import Home from '@/views/HomeView.vue'
+import authRoutes from '@/modules/auth/router'
+import dashboardRoutes from '@/modules/dashboard/router'
+import userRoutes from '@/modules/user/router'
 
 const routes = [
+  ...authRoutes,
+  ...dashboardRoutes,
+  ...userRoutes,
+
   {
     meta: {
-      title: 'Select style'
-    },
-    path: '/',
-    name: 'style',
-    component: Style
-  },
-  {
-    // Document title tag
-    // We combine it with defaultDocumentTitle set in `src/main.ts` on router.afterEach hook
-    meta: {
-      title: 'Dashboard'
-    },
-    path: '/dashboard',
-    name: 'dashboard',
-    component: Home
-  },
-  {
-    meta: {
-      title: 'Tables'
-    },
-    path: '/tables',
-    name: 'tables',
-    component: () => import('@/views/TablesView.vue')
-  },
-  {
-    meta: {
-      title: 'Forms'
-    },
-    path: '/forms',
-    name: 'forms',
-    component: () => import('@/views/FormsView.vue')
-  },
-  {
-    meta: {
-      title: 'Profile'
-    },
-    path: '/profile',
-    name: 'profile',
-    component: () => import('@/views/ProfileView.vue')
-  },
-  {
-    meta: {
-      title: 'Ui'
-    },
-    path: '/ui',
-    name: 'ui',
-    component: () => import('@/views/UiView.vue')
-  },
-  {
-    meta: {
-      title: 'Responsive layout'
-    },
-    path: '/responsive',
-    name: 'responsive',
-    component: () => import('@/views/ResponsiveView.vue')
-  },
-  {
-    meta: {
-      title: 'Login'
-    },
-    path: '/login',
-    name: 'login',
-    component: () => import('@/views/LoginView.vue')
-  },
-  {
-    meta: {
-      title: 'Error'
+      title: 'Error',
+      requiresAuth: false
     },
     path: '/error',
     name: 'error',
@@ -86,5 +26,20 @@ const router = createRouter({
     return savedPosition || { top: 0 }
   }
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth && !isLoggedIn()) {
+    next({ name: 'login' })
+  } else {
+    next()
+  }
+})
+
+// Función para verificar si el usuario está autenticado
+function isLoggedIn() {
+  // Aquí debes implementar la lógica para verificar si el usuario está autenticado
+  // Por ejemplo, puedes verificar si hay un token de autenticación en el localStorage
+  return localStorage.getItem('token') !== null
+}
 
 export default router

@@ -1,5 +1,6 @@
 <script setup>
 import { reactive } from 'vue'
+import { useAuth } from '@/modules/auth/composables/useAuth';
 import { useRouter } from 'vue-router'
 import { mdiAccount, mdiAsterisk } from '@mdi/js'
 import SectionFullScreen from '@/components/SectionFullScreen.vue'
@@ -12,16 +13,20 @@ import BaseButtons from '@/components/BaseButtons.vue'
 import LayoutGuest from '@/layouts/LayoutGuest.vue'
 
 const form = reactive({
-  login: 'john.doe',
-  pass: 'highly-secure-password-fYjUw-',
-  remember: true
+  login: null,
+  pass: null,
 })
 
 const router = useRouter()
 
-const submit = () => {
-  router.push('/dashboard')
-}
+const { login, error } = useAuth();
+
+const submit = async () => {
+  await login({
+    login: form.login,
+    pass: form.pass,
+  });
+};
 </script>
 
 <template>
@@ -57,10 +62,14 @@ const submit = () => {
         <template #footer>
           <BaseButtons>
             <BaseButton type="submit" color="info" label="Login" />
-            <BaseButton to="/dashboard" color="info" outline label="Back" />
+            <BaseButton to="/" color="info" outline label="Back" />
           </BaseButtons>
         </template>
       </CardBox>
     </SectionFullScreen>
+
+    <div v-if="error" class="text-red-500">
+      {{ error }}
+    </div>
   </LayoutGuest>
 </template>
