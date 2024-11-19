@@ -18,6 +18,7 @@ export const useAuthStore = defineStore('auth', {
   }),
   actions: {
     setToken(token: string) {
+      console.log('token autenticación', token);
       this.token = token;
     },
     setUser(user: User) {

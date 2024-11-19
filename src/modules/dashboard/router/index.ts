@@ -8,7 +8,7 @@ const dashboardRoutes: RouteRecordRaw[] = [
     component: Home,
     meta: {
        title: 'Dashboard',
-      requiresAuth: false
+      requiresAuth: true
     }
   },
 ]

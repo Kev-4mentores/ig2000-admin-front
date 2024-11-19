@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import authRoutes from '@/modules/auth/router'
 import dashboardRoutes from '@/modules/dashboard/router'
 import userRoutes from '@/modules/user/router'
+import { useAuthStore } from '@/modules/auth/stores/useAuthStore'
 
 const routes = [
   ...authRoutes,
@@ -27,19 +28,15 @@ const router = createRouter({
   }
 })
 
+
 router.beforeEach((to, from, next) => {
-  if (to.meta.requiresAuth && !isLoggedIn()) {
+  const { isAuthenticated } = useAuthStore()
+  console.log('isAuthenticated', isAuthenticated, to.meta.requiresAuth);
+  if (to.meta.requiresAuth && !isAuthenticated) {
     next({ name: 'login' })
   } else {
     next()
   }
 })
-
-// Función para verificar si el usuario está autenticado
-function isLoggedIn() {
-  // Aquí debes implementar la lógica para verificar si el usuario está autenticado
-  // Por ejemplo, puedes verificar si hay un token de autenticación en el localStorage
-  return localStorage.getItem('token') !== null
-}
 
 export default router

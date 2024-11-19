@@ -15,19 +15,15 @@ export function useAuth() {
 
   const login = async (form: LoginForm) => {
     try {
-      console.log('datos del login',form);
-      // const response = await axios.post('/api/login', {
-      //   username: form.login,
-      //   password: form.pass,
-      // });
-
+      console.log('datos del login',form); 
+      const response = await axios.post('http://localhost/api/auth/login', {
+        email: form.login,
+        password: form.pass,
+      });
+      
       // Guardamos el token y el usuario en Pinia
-      // authStore.setToken(response.data.token);
-      // authStore.setUser(response.data.user);
-      authStore.setUser(form.login);
-
-      // Redirigimos a la página principal después de autenticarse
-      //router.push('/');
+      authStore.setToken(response.data.data.token);
+      authStore.setUser(response.data.data.user);
     } catch (err: any) {
       error.value = err.response?.data?.message || 'Error en la autenticación';
     }

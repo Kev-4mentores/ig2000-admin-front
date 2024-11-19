@@ -21,11 +21,25 @@ const router = useRouter()
 
 const { login, error } = useAuth();
 
-const submit = async () => {
-  await login({
+// const submit = async () => {
+//   await login({
+//     login: form.login,
+//     pass: form.pass,
+//   });
+// };
+const submit = () => {
+  login({
     login: form.login,
     pass: form.pass,
-  });
+  })
+    .then(() => {
+      // Si el login es exitoso, redirigir a la ruta principal
+      router.push('/');
+    })
+    .catch((err) => {
+      // Manejar errores, si es necesario
+      console.error('Error al iniciar sesión:', err);
+    });
 };
 </script>
 

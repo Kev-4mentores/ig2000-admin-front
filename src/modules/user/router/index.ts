@@ -8,7 +8,7 @@ const userRoutes: RouteRecordRaw[] = [
     component: Users,
     meta: {
        title: 'Users',
-      requiresAuth: false
+      requiresAuth: true
     }
   },
 ]
