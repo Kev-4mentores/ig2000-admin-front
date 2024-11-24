@@ -1,6 +1,7 @@
 <script setup>
 import { mdiLogout, mdiClose } from '@mdi/js'
 import { computed } from 'vue'
+import { useAuth } from '@/modules/auth/composables/useAuth';
 import AsideMenuList from '@/components/AsideMenuList.vue'
 import AsideMenuItem from '@/components/AsideMenuItem.vue'
 import BaseIcon from '@/components/BaseIcon.vue'
@@ -11,6 +12,8 @@ defineProps({
     required: true
   }
 })
+
+const { logout } = useAuth();
 
 const emit = defineEmits(['menu-click', 'aside-lg-close-click'])
 
@@ -23,6 +26,10 @@ const logoutItem = computed(() => ({
 
 const menuClick = (event, item) => {
   emit('menu-click', event, item)
+}
+
+const logoutClick = () => {
+  logout();
 }
 
 const asideLgCloseClick = (event) => {
@@ -51,7 +58,7 @@ const asideLgCloseClick = (event) => {
       </div>
 
       <ul>
-        <AsideMenuItem :item="logoutItem" @menu-click="menuClick" />
+        <AsideMenuItem :item="logoutItem" @click="logoutClick()" />
       </ul>
     </div>
   </aside>

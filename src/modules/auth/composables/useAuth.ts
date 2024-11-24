@@ -1,6 +1,7 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/modules/auth/stores/useAuthStore';
+import axiosInstance from '@/axiosInstance'; 
 import axios from 'axios';
 
 interface LoginForm {
@@ -16,7 +17,7 @@ export function useAuth() {
   const login = async (form: LoginForm) => {
     try {
       console.log('datos del login',form); 
-      const response = await axios.post('http://localhost/api/auth/login', {
+      const response = await axiosInstance.post('api/auth/login', {
         email: form.login,
         password: form.pass,
       });

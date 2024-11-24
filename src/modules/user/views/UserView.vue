@@ -55,6 +55,14 @@
               small
             />
           </SectionTitleLineWithButton>
+
+          <NotificationBar color="info" :icon="mdiMonitorCellphone">
+            <b>Responsive table.</b> Collapses on mobile
+          </NotificationBar>
+    
+          <CardBox class="mb-6" has-table>
+            <TableSampleClients checkable />
+          </CardBox>
     
         
          
